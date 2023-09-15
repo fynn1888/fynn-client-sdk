@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>io.github.fynn1888</groupId>
+    <artifactId>fynn-client-sdk</artifactId>
+    <version>0.0.1</version>
+    <name>fynn-client-sdk</name>
+    <description>fynn-client-sdk</description>
+    <url>https://github.com/fynn1888/fynn-client-sdk</url>
+    <!-- 开源签名证书 -->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <!-- 仓库信息 -->
+    <scm>
+        <connection>scm:git@github.com:fynn1888/fynn-client-sdk.git</connection>
+        <developerConnection>scm:git@github.com:fynn1888/fynn-client-sdk.git
+        </developerConnection>
+        <url>https://github.com/fynn1888/fynn-client-sdk</url>
+    </scm>
+    <!-- 开发人员信息 -->
+    <developers>
+        <developer>
+            <name>fynn</name>
+            <email>rui2532023@163.com</email>
+            <organization>https://github.com/fynn1888</organization>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+    <!-- 发布项目到 sonatype -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--                <configuration>-->
+    <!--                    <skip>true</skip>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-compiler-plugin</artifactId>-->
+    <!--                <configuration>-->
+    <!--                    <encoding>utf-8</encoding>-->
+    <!--                    <source>8</source>-->
+    <!--                    <target>8</target>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--            <plugin>-->
+    <!--                    <groupId>org.sonatype.plugins</groupId>-->
+    <!--                    <artifactId>nexus-staging-maven-plugin</artifactId>-->
+    <!--                    <version>1.6.13</version>-->
+    <!--                <extensions>true</extensions>-->
+    <!--                <configuration>-->
+    <!--                    <serverId>ossrh</serverId>-->
+    <!--                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
+    <!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--            &lt;!&ndash; 生成java source.jar &ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-source-plugin</artifactId>-->
+    <!--                <version>2.2.1</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>attach-sources</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>jar-no-fork</goal>-->
+    <!--                        </goals>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-gpg-plugin</artifactId>-->
+    <!--                <version>1.5</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>sign-artifacts</id>-->
+    <!--                        <phase>verify</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>sign</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <keyname>0xF4110822</keyname>-->
+    <!--                            <passphraseServerId>0xF4110822</passphraseServerId>-->
+    <!--                            <gpgArguments>-->
+    <!--                                <arg>&#45;&#45;pinentry-mode</arg>-->
+    <!--                                <arg>loopback</arg>-->
+    <!--                            </gpgArguments>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+    <!--                <version>2.9.1</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>attach-javadocs</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>jar</goal>-->
+    <!--                        </goals>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <!-- 生成java source.jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                    <!-- TODO 临时解决不规范的javadoc生成报错,后面要规范化后把这行去掉 -->
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
